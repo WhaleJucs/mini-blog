@@ -8,7 +8,7 @@ import {
     signOut
 } from "firebase/auth"
 
-import { useState, useEffect, use } from "react"
+import { useState, useEffect } from "react"
 
 export const useAuthentication = () => {
     const [error, setError] = useState(null)
@@ -74,7 +74,42 @@ export const useAuthentication = () => {
     // logout
     const logout = () => {
         checkIfIsCancelled()
+
         signOut(auth)
+    }
+
+    // login
+    const login = async (data) => {
+        checkIfIsCancelled()
+
+        setLoading(true)
+        setError(false)
+
+        try {
+            await signInWithEmailAndPassword(
+                auth,
+                data.email,
+                data.password
+            )
+
+            setLoading(false)
+        }
+
+        catch (error) {
+            let systemErrorMessage
+            console.log(error)
+
+            if (error.message.includes("auth/invalid-credential")) {
+                systemErrorMessage = "Usuario ou senha incorretos."
+            }
+
+            else {
+                systemErrorMessage = "Ocorreu um erro, tente novamente mais tarde."
+            }
+
+            setError(systemErrorMessage)
+            setLoading(false)
+        }
     }
 
     useEffect(() => {
@@ -82,5 +117,5 @@ export const useAuthentication = () => {
     }, [])
 
 
-    return { auth, createUser, error, loading, logout }
+    return { auth, createUser, error, loading, logout, login }
 }

@@ -1,6 +1,6 @@
 import styles from './Register.module.css'
 
-import { useState, useEffect, use } from 'react'
+import { useState, useEffect } from 'react'
 
 import { useAuthentication } from '../../hooks/useAthentication'
 
@@ -14,7 +14,7 @@ const Register = () => {
     const { createUser, error: authError, loading } = useAuthentication()
 
     const handleSubmit = async (e) => {
-        e.preventDefault() 
+        e.preventDefault()
         setError('')
 
         const user = {
@@ -23,7 +23,7 @@ const Register = () => {
             password
         }
 
-        if(password !== confirmPassword) {
+        if (password !== confirmPassword) {
             setError('As senhas precisam ser iguais!')
             return
         }
@@ -47,46 +47,46 @@ const Register = () => {
             <form onSubmit={handleSubmit}>
                 <label>
                     <span>Nome:</span>
-                    <input 
-                        type="text" 
-                        name='displayName' 
-                        required 
-                        placeholder='Nome do usuário' 
-                        value={displayName} 
-                        onChange={(e) => setDisplayName(e.target.value)}/>
+                    <input
+                        type="text"
+                        name='displayName'
+                        required
+                        placeholder='Nome do usuário'
+                        value={displayName}
+                        onChange={(e) => setDisplayName(e.target.value)} />
                 </label>
 
                 <label>
                     <span>E-mail:</span>
-                    <input 
-                        type="email" 
-                        name='email' 
-                        required 
+                    <input
+                        type="email"
+                        name='email'
+                        required
                         placeholder='E-mail do usuário'
-                        value={email} 
-                        onChange={(e) => setEmail(e.target.value)}/>
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)} />
                 </label>
 
                 <label>
                     <span>Senha:</span>
-                    <input 
-                        type="password" 
-                        name='password' 
-                        required 
+                    <input
+                        type="password"
+                        name='password'
+                        required
                         placeholder='Insira sua senha'
-                        value={password} 
-                        onChange={(e) => setPassword(e.target.value)}/>
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)} />
                 </label>
 
                 <label>
                     <span>Confirmação de Senha:</span>
-                    <input 
-                        type="password" 
-                        name='confirmPassword' 
-                        required 
-                        placeholder='Confirme a sua senha' 
-                        value={confirmPassword} 
-                        onChange={(e) => setConfirmPassword(e.target.value)}/>
+                    <input
+                        type="password"
+                        name='confirmPassword'
+                        required
+                        placeholder='Confirme a sua senha'
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)} />
                 </label>
 
                 {!loading && <button className='btn'>Cadastrar</button>}

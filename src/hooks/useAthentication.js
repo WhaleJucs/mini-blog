@@ -25,6 +25,8 @@ export const useAuthentication = () => {
         }
     }
 
+    // register
+
     const createUser = async (data) => {
         checkIfIsCancelled()
 
@@ -45,7 +47,7 @@ export const useAuthentication = () => {
             setLoading(false)
 
             return user
-        } 
+        }
 
         catch (error) {
             console.log(error.message)
@@ -54,12 +56,12 @@ export const useAuthentication = () => {
             let systemErrorMessage
             if (error.message.includes("Password")) {
                 systemErrorMessage = "A senha precisa conter pelo menos 6 caracteres."
-            } 
-            
+            }
+
             else if (error.message.includes("email-already")) {
                 systemErrorMessage = "E-mail já cadastrado."
-            } 
-            
+            }
+
             else {
                 systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde."
             }
@@ -69,10 +71,16 @@ export const useAuthentication = () => {
         }
     }
 
+    // logout
+    const logout = () => {
+        checkIfIsCancelled()
+        signOut(auth)
+    }
+
     useEffect(() => {
         return () => setCancelled(true)
     }, [])
 
 
-    return { auth, createUser, error, loading }
+    return { auth, createUser, error, loading, logout }
 }

@@ -5,14 +5,15 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { useState, useEffect } from 'react'
 import { useAuthentication } from './hooks/useAthentication'
 
+// CSS
 import './App.css'
 
 // context
 import { AuthProvider } from './context/AuthContext'
 
 // pages
-import Home from './pages/Home/home'
-import About from './pages/About/about'
+import Home from './pages/Home/Home'
+import About from './pages/About/About'
 
 // components
 import NavBar from './components/Navbar'

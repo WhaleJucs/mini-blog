@@ -1,18 +1,17 @@
-import { useState, useEffect, use } from "react";
-import { db } from "../firebase/config";
+import { useState, useEffect, use } from "react"
+import { db } from "../firebase/config"
 import {
     collection,
     query,
     where,
     orderBy,
-    onSnapshot,
-    doc
-} from "firebase/firestore";
+    onSnapshot
+} from "firebase/firestore"
 
 export const useFetchDocuments = (docCollection, search = null, uid = null) => {
-    const [documents, setDocuments] = useState(null);
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(null);
+    const [documents, setDocuments] = useState(null)
+    const [error, setError] = useState(null)
+    const [loading, setLoading] = useState(null)
 
     // evitar vazamento de meoria - memory leak
     const [cancelled, setCancelled] = useState(false)
@@ -66,7 +65,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
         }
 
         loadData()
-    }, [docCollection, search, uid, cancelled])
+    }, [docCollection, documents, search, uid, cancelled])
 
     useEffect(() => {
         return () => setCancelled(true)

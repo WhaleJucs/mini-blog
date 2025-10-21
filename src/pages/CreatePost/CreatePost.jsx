@@ -59,7 +59,8 @@ const CreatePost = () => {
             <h2>Criar Post</h2>
             <p>O que você está pensando hoje?</p>
             <form onSubmit={handleSubmit}>
-                <label>Título:
+                <label>
+                    <span>Título:</span>
                     <input
                         type='text'
                         name='title'
@@ -70,7 +71,8 @@ const CreatePost = () => {
                     />
                 </label>
 
-                <label>Imagem:
+                <label>
+                    <span>Imagem:</span>
                     <input
                         type='text'
                         name='image'
@@ -81,7 +83,8 @@ const CreatePost = () => {
                     />
                 </label>
 
-                <label>Conteúdo:
+                <label>
+                    <span>Conteúdo:</span>
                     <textarea
                         name='body'
                         required
@@ -91,7 +94,8 @@ const CreatePost = () => {
                     ></textarea>
                 </label>
 
-                <label>Tags:
+                <label>
+                    <span>Tags:</span>
                     <input
                         type='text'
                         name='tags'

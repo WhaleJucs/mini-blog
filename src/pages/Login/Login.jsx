@@ -39,7 +39,7 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
 
                 <label>
-                    <span>E-mail:</span>
+                    <span>E-mail</span>
                     <input
                         type="email"
                         name='email'
@@ -50,7 +50,7 @@ const Login = () => {
                 </label>
 
                 <label>
-                    <span>Senha:</span>
+                    <span>Senha</span>
                     <input
                         type="password"
                         name='password'
